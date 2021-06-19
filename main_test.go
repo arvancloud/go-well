@@ -14,49 +14,70 @@ func Test_well(t *testing.T) {
 
 	t.Run("it can make the messy #1 well imported", func(t *testing.T) {
 		makeTempFileFilledWith(getMessySourceFileContent1())
-		well(TestFileName)
+		err := well(TestFileName)
+		if err != nil {
+			t.Error(err)
+		}
 		assertTestFileEqualsTo(t, getWellSourceFileContent1())
 		tearDown()
 	})
 
 	t.Run("it can make the messy #2 well imported", func(t *testing.T) {
 		makeTempFileFilledWith(getMessySourceFileContent2())
-		well(TestFileName)
+		err := well(TestFileName)
+		if err != nil {
+			t.Error(err)
+		}
 		assertTestFileEqualsTo(t, getWellSourceFileContent2())
 		tearDown()
 	})
 
 	t.Run("it can make the messy #3 well imported", func(t *testing.T) {
 		makeTempFileFilledWith(getMessySourceFileContent3())
-		well(TestFileName)
+		err := well(TestFileName)
+		if err != nil {
+			t.Error(err)
+		}
 		assertTestFileEqualsTo(t, getWellSourceFileContent3())
 		tearDown()
 	})
 
 	t.Run("it can make the messy #4 well imported", func(t *testing.T) {
 		makeTempFileFilledWith(getMessySourceFileContent4())
-		well(TestFileName)
+		err := well(TestFileName)
+		if err != nil {
+			t.Error(err)
+		}
 		assertTestFileEqualsTo(t, getWellSourceFileContent4())
 		tearDown()
 	})
 
 	t.Run("it can make the messy #5 well imported", func(t *testing.T) {
 		makeTempFileFilledWith(getMessySourceFileContent5())
-		well(TestFileName)
+		err := well(TestFileName)
+		if err != nil {
+			t.Error(err)
+		}
 		assertTestFileEqualsTo(t, getWellSourceFileContent5())
 		tearDown()
 	})
 
 	t.Run("it can make the messy and unsorted #1 well sorted and imported", func(t *testing.T) {
 		makeTempFileFilledWith(getUnSortedMessySourceFileContent1())
-		well(TestFileName)
+		err := well(TestFileName)
+		if err != nil {
+			t.Error(err)
+		}
 		assertTestFileEqualsTo(t, getWellSortedSourceFileContent1())
 		tearDown()
 	})
 
 	t.Run("it can make the messy and unsorted #2 well sorted and imported", func(t *testing.T) {
 		makeTempFileFilledWith(getUnSortedMessySourceFileContent2())
-		well(TestFileName)
+		err := well(TestFileName)
+		if err != nil {
+			t.Error(err)
+		}
 		assertTestFileEqualsTo(t, getWellSortedSourceFileContent2())
 		tearDown()
 	})

@@ -8,6 +8,7 @@ import (
 	"regexp"
 	"sort"
 	"strings"
+	"sync"
 )
 
 const FileExtension = "go"
@@ -20,12 +21,20 @@ func main() {
 		os.Exit(1)
 	}
 
+	wg := sync.WaitGroup{}
+
 	for _, fileName := range files {
-		if err := well(fileName); err != nil {
-			fmt.Printf("failed welling %s duo to %s\n", fileName, err.Error())
-			continue
-		}
+		wg.Add(1)
+
+		go func(fileName string) {
+			defer wg.Done()
+			if err := well(fileName); err != nil {
+				fmt.Printf("failed welling %s duo to %s\n", fileName, err.Error())
+			}
+		}(fileName)
 	}
+
+	wg.Wait()
 }
 
 func getFilesIn(path, extension string) ([]string, error) {
